@@ -1,14 +1,26 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center text-success">All Admin Panel</h2>
+                <table class="table ">
+       <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">User Name</th>
+      <th scope="col">User E-Mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach ($all_user as $user)
+    <tr>
+      <td>{{ $loop->index+1 }}</td>
+      <td>{{ $user->name }}</td>
+      <td>{{ $user->email }}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
             </div>
         </div>
     </div>

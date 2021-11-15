@@ -21,3 +21,11 @@ Route::get('/contact', 'App\Http\Controllers\FrontendController@contact');
 Route::get('/cart', 'App\Http\Controllers\FrontendController@cart');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard','App\Http\Controllers\BackendController@dashboard')->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/add/product','App\Http\Controllers\ProductController@addproduct');
+Route::middleware(['auth:sanctum', 'verified'])->post('/insert/product','App\Http\Controllers\ProductController@insertproduct');
+Route::middleware(['auth:sanctum', 'verified'])->post('/edit/product','App\Http\Controllers\ProductController@editproduct');
+Route::middleware(['auth:sanctum', 'verified'])->get('/delete/{pd}','App\Http\Controllers\ProductController@productdelete');
+Route::middleware(['auth:sanctum', 'verified'])->get('/edit/{pe}','App\Http\Controllers\ProductController@productedit');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/add/category','App\Http\Controllers\CategoryController@addcategory');
+Route::middleware(['auth:sanctum', 'verified'])->post('/insert/category','App\Http\Controllers\CategoryController@insertcategory');
