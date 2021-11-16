@@ -59,66 +59,40 @@
 								<span>Remove</span>
 							</div>
 						</div>
-						<div class="product-cart">
+						
+						@foreach ($add_cart as $cart )
+							<div class="product-cart">
 							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-6.jpg);">
+								<div class="product-img" style="background-image: url({{ asset('product_image/') }}/{{ App\Models\ProductModel::find($cart->id)->product_image }});">
 								</div>
 								<div class="display-tc">
-									<h3>Product Name</h3>
+									<h3>{{ App\Models\ProductModel::find($cart->id)->product_name }}</h3>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<span class="price">$68.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$120.00</span>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<a href="#" class="closed"></a>
-								</div>
-							</div>
-						</div>
-						<div class="product-cart">
-							<div class="one-forth">
-								<div class="product-img" style="background-image: url(images/item-7.jpg);">
-								</div>
-								<div class="display-tc">
-									<h3>Product Name</h3>
-								</div>
-							</div>
-							<div class="one-eight text-center">
-								<div class="display-tc">
-									<span class="price">$68.00</span>
+									<span class="price">${{ App\Models\ProductModel::find($cart->id)->product_price }}</span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
 									<form action="#">
-										<input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+										<input type="text" name="quantity" class="form-control input-number text-center" value="{{ $cart->product_quantity }}" min="1" max="100">
 									</form>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<span class="price">$120.00</span>
+									<span class="price">${{ $cart->product_quantity * App\Models\ProductModel::find($cart->id)->product_price }} </span>
 								</div>
 							</div>
 							<div class="one-eight text-center">
 								<div class="display-tc">
-									<a href="#" class="closed"></a>
+									<a href="{{ url('/remove') }}/{{ $cart->id }}" class="closed"></a>
 								</div>
 							</div>
 						</div>
+						@endforeach
                         
 					</div>
                     
@@ -129,7 +103,7 @@
                         <a class="site-btn btn-continue" href="shop.html" style="background: #E26329;padding: 11px;display: inline-block;color: white;font-size: 20px;margin-bottom: 30px;margin-left: 94px;margin-top: -24px;">Continue shooping</a>
                     </div>
                     <div class="col-lg-7 col-md-7 text-lg-right text-right" style="margin-left: -97px;margin-top: -43px;">
-                        <a class="site-btn btn-clear" href="" style="background: #403c3c;padding: 10px 15px;font-size: 18px;margin-right: 15px;color: white;">Clear cart</a>
+                        <a class="site-btn btn-clear" href="{{ url('/clear/cart') }}" style="background: #403c3c;padding: 10px 15px;font-size: 18px;margin-right: 15px;color: white;">Clear cart</a>
                         <button type="" class="site-btn btn-line " style="background:#363d96;padding: 5px 15px;color: white;border: none;font-size: 18px;">Update Cart</button>
                     </div>
 			     </div>

@@ -77,7 +77,8 @@
                                 <li class="{{ Request::is('shop')? 'active': '' }}"><a href="{{ url('/shop') }}">Shop</a></li>
 								<li class="{{ Request::is('blog')? 'active': '' }}"><a href="{{ url('/blog') }}">Blog</a></li>
 								<li class="{{ Request::is('contact')? 'active': '' }}"><a href="{{ url('/contact') }}">Contact</a></li>
-								<li class="{{ Request::is('cart')? 'active': '' }}"><a href="{{ url('/cart') }}"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+								<li class="{{ Request::is('cart')? 'active': '' }}"><a href="{{ url('/cart') }}"><i class="icon-shopping-cart"></i> Cart [{{App\Models\AddCartModel::where('user_ip',$_SERVER['REMOTE_ADDR'])->count() }}]</a></li>
+								
 							</ul>
                             <ul style="position: absolute;right: -90px;top: -32px;text-decoration: underline;" class="log_reg_btn">
 							<li><a href="{{ url('/login') }}">Login</a></li>

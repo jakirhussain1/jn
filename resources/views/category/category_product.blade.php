@@ -25,29 +25,27 @@
 				<div class="row">
 					<div class="col-md-10 col-md-push-2">
 						<div class="row row-pb-lg">
-							<strong class="text-center text-success">All Category</strong>
-							@foreach ($all_product as $product )
-								<div class="col-md-4 text-center">
+							 @foreach ($unique_category as $category)
+                                 <div class="col-md-4 text-center">
 								<div class="product-entry">
-									<div class="product-img" style="background-image: url({{ asset('product_image/'.$product->product_image) }});">
+									<div class="product-img" style="background-image: url({{ asset('product_image/'.$category->product_image) }});">
 										<p class="tag"><span class="new">New</span></p>
 										<div class="cart">
 											<p>
 												<span class="addtocart"><a href="cart.html"><i class="icon-shopping-cart"></i></a></span> 
-												<span><a href="{{ url('/product/details') }}/{{ $product->id }}"><i class="icon-eye"></i></a></span> 
+												<span><a href="{{ url('/product/details') }}/{{ $category->id }}"><i class="icon-eye"></i></a></span> 
 												<span><a href="#"><i class="icon-heart3"></i></a></span>
 												<span><a href="add-to-wishlist.html"><i class="icon-bar-chart"></i></a></span>
 											</p>
 										</div>
 									</div>
 									<div class="desc">
-										<h3><a href="product-detail.html">{{ $product->product_name }}</a></h3>
-										<p class="price"><span>${{ $product->product_price }}</span></p>
+										<h3><a href="product-detail.html">{{ $category->category_name }}</a></h3>
+										<p class="price"><span>${{ $category->category_price }}</span></p>
 									</div>
 								</div>
 							</div>
-							@endforeach
-						
+                             @endforeach	
 						</div>
 						<div class="row">
 							<div class="col-md-12">
@@ -68,10 +66,8 @@
 								<h2>Categories</h2>
 								<div class="fancy-collapse-panel">
 			                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-			                     
-                                  
 			                     @foreach ($all_category as $category)
-									 <div class="panel panel-default">
+                                     <div class="panel panel-default">
 			                         <div class="panel-heading" role="tab" id="headingOne">
 			                             <h4 class="panel-title">
 			                                 <a class="collapsed" href="{{ url('/category/product') }}/{{ $category->id }}" aria-expanded="true" aria-controls="collapseOne"><strong class="text-success">{{ $category->category_name }}</strong>
@@ -79,7 +75,9 @@
 			                             </h4>
 			                         </div>
 			                     </div>
-								 @endforeach
+                                 @endforeach
+                                  
+			                     
 			                  </div>
 			               </div>
 							</div>
@@ -88,4 +86,5 @@
 				</div>
 			</div>
 		</div>
+
 @endsection

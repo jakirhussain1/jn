@@ -19,6 +19,11 @@ Route::get('/shop', 'App\Http\Controllers\FrontendController@shop');
 Route::get('/blog', 'App\Http\Controllers\FrontendController@blog');
 Route::get('/contact', 'App\Http\Controllers\FrontendController@contact');
 Route::get('/cart', 'App\Http\Controllers\FrontendController@cart');
+Route::get('/product/details/{pd}', 'App\Http\Controllers\FrontendController@productdetails');
+Route::get('/category/product/{cp}', 'App\Http\Controllers\FrontendController@categoryproduct');
+Route::get('/add/to/cart/{atoc}', 'App\Http\Controllers\AddCartController@addtocart');
+Route::get('/remove/{re}', 'App\Http\Controllers\AddCartController@remove');
+Route::get('/clear/cart', 'App\Http\Controllers\AddCartController@clearcart');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard','App\Http\Controllers\BackendController@dashboard')->name('dashboard');
 Route::middleware(['auth:sanctum', 'verified'])->get('/add/product','App\Http\Controllers\ProductController@addproduct');

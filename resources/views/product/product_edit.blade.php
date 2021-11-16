@@ -14,7 +14,6 @@
           @csrf
           <label for="">Category Name</label>
           <select class="form-control" name="category_id" id="">
-            <option value="">--Select--</option>
             @foreach ($all_category as $category)
               <option value="{{ $category->id }}"{{ ($category->id== $product_edit->category_id)? 'selected' : ''; }}>{{ $category->category_name }}</option>
             @endforeach
